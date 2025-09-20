@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates Logos</title>
+<style>
+/* الخلفية */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #24c6dc, #514a9d);
+    background-size: 800% 800%;
+    animation: gradientShift 12s ease infinite;
+    color: white;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* الأشكال العائمة */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.35;
+    animation: float 15s infinite ease-in-out;
+    z-index: 0;
+}
+.shape:nth-child(1){ width:120px;height:120px; background: radial-gradient(circle at 30% 30%, #ff5f6d,#ffc371); top:5%; left:10%; animation-delay:0s; }
+.shape:nth-child(2){ width:150px;height:150px; background: radial-gradient(circle at 70% 70%, #24c6dc,#514a9d); top:40%; left:60%; animation-delay:5s; }
+.shape:nth-child(3){ width:100px;height:100px; background: radial-gradient(circle at 50% 50%, #ff9a9e,#fad0c4); top:70%; left:20%; animation-delay:10s; }
+.shape:nth-child(4){ width:140px;height:140px; background: radial-gradient(circle at 50% 50%, #ff6f61,#ffc371); top:25%; left:75%; animation-delay:3s; }
+.shape:nth-child(5){ width:110px;height:110px; background: radial-gradient(circle at 50% 50%, #24c6dc,#ff9a9e); top:80%; left:50%; animation-delay:7s; }
+
+@keyframes float {
+    0% {transform:translateY(0px) rotate(0deg);}
+    50% {transform:translateY(-30px) rotate(180deg);}
+    100% {transform:translateY(0px) rotate(360deg);}
+}
+
+/* العنوان */
+h1 {
+    font-size: 2em;
+    margin: 20px 0;
+    z-index: 10;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+    animation: fadeInDown 1s ease forwards;
+}
+
+/* الأنيميشن */
+@keyframes fadeInDown {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+@keyframes tap {
+    0% {transform: scale(1);}
+    50% {transform: scale(0.92);}
+    100% {transform: scale(1);}
+}
+
+/* شبكة اللوغوهات */
+.logos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 800px;
+    width: 95%;
+    margin-top: 20px;
+    z-index: 10;
+}
+
+/* بطاقات اللوغو */
+.logo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+}
+.logo-card:nth-child(1){animation-delay:0.2s;}
+.logo-card:nth-child(2){animation-delay:0.4s;}
+.logo-card:nth-child(3){animation-delay:0.6s;}
+.logo-card:nth-child(4){animation-delay:0.8s;}
+.logo-card:nth-child(5){animation-delay:1s;}
+
+/* وميض عند الهوفر */
+.logo-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    transform: rotate(25deg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.logo-card:hover::before { opacity: 1; }
+.logo-card:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.15);
+}
+
+/* صورة اللوغو */
+.logo-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    z-index: 2;
+}
+.logo-card:hover img { transform: scale(1.12) rotate(3deg); }
+
+/* اسم الشهادة */
+.logo-card span {
+    margin-top: 12px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .logos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .logo-card img { width: 90px; height: 90px; }
+}
+
+/* 🎉 تحسين خاص للهاتف */
+@media(max-width:480px){
+    .logos-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+    .logo-card {
+        padding: 18px;
+        border-radius: 24px;
+        animation: fadeUp 1s ease forwards;
+    }
+    .logo-card img { width: 85px; height: 85px; }
+    .logo-card:active {
+        animation: tap 0.3s ease; /* تأثير الضغط باللمس */
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="shape"></div>
+<div class="shape"></div>
+<div class="shape"></div>
+<div class="shape"></div>
+<div class="shape"></div>
+
+<h1>My Certificates</h1>
+<div class="logos-grid">
+    <a class="logo-card" href="CS50x.pdf" target="_blank">
+        <img src="1.png">
+        <span>CS50x</span>
+    </a>
+    <a class="logo-card" href="free code.pdf" target="_blank">
+        <img src="2.png">
+        <span>FreeCodeCamp</span>
+    </a>
+    <a class="logo-card" href="IBMDesign20250508-27-xj8frn.pdf" target="_blank">
+        <img src="3.jpg">
+        <span>IBM Design</span>
+    </a>
+    <a class="logo-card" href="javascript.pdf" target="_blank">
+        <img src="2.png">
+        <span>FreeCodeCamp JS</span>
+    </a>
+    <a class="logo-card" href="manara-Front-end (2).pdf" target="_blank">
+        <img src="4.png">
+        <span>Manara</span>
+    </a>
+</div>
+
+</body>
+</html>
